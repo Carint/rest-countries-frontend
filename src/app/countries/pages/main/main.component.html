@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="header">
+    <h1>Where in the world?</h1>
+    <button mat-button>
+      <mat-icon aria-hidden="false" fontIcon="dark_mode"></mat-icon>
+      Dark Mode
+    </button>
+  </div>
+
+  <div class="section-search">
+    <mat-form-field appearance="outline">
+      <!-- <mat-label>Search for a country</mat-label> -->
+      <input matInput placeholder="Search for a country" autocomplete="off">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Filter by Region</mat-label>
+      <mat-select [formControl]="regionSelect">
+        <mat-option *ngFor="let item of regions" [value]="item.value">
+          {{ item.name | titlecase }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="section-filter-countries">
+    <div class="cards" *ngFor="let item of countries">
+      <app-card [country]="item"></app-card>
+    </div>
+  </div>
+</div>
